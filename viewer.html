@@ -2,8 +2,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
   <style>
     body {
       margin: 0;
@@ -58,9 +56,10 @@
       z-index: 10;
     }
 
-    model-viewer {
+    iframe {
       width: 100%;
       height: 100%;
+      border: none;
     }
   </style>
 </head>
@@ -77,15 +76,8 @@
     <!-- Close button -->
     <span class="close-btn" onclick="closeModal()">&times;</span>
 
-    <!-- 3D viewer -->
-    <model-viewer
-      src="https://raw.githubusercontent.com/AnatolyBerezkin/3dmodels/main/BRTIRUS Model_V3Glb.glb"
-      camera-controls
-      auto-rotate
-      shadow-intensity="1"
-      exposure="0.5"
-      alt="3D model">
-    </model-viewer>
+    <!-- Iframe with your existing viewer.html -->
+    <iframe src="https://anatolyberezkin.github.io/3dmodels/viewer.html"></iframe>
 
   </div>
 </div>
