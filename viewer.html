@@ -3,27 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #fff;
+      font-family: Arial, sans-serif;
     }
+
+    /* Button that opens the 3D viewer */
+    .open-btn {
+      padding: 12px 20px;
+      background: #0078ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 20px;
+    }
+
+    /* Modal background overlay */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    /* Modal content container */
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      height: 90%;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* Close button */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #333;
+      cursor: pointer;
+      z-index: 10;
+    }
+
     model-viewer {
       width: 100%;
       height: 100%;
     }
   </style>
 </head>
+
 <body>
-  <model-viewer
-      src="https://raw.githubusercontent.com/AnatolyBerezkin/3dmodels/main/RamwithwormGear.glb"
+
+<!-- Button that opens the modal -->
+<button class="open-btn" onclick="openModal()">3D VIEW</button>
+
+<!-- Modal window -->
+<div id="viewerModal" class="modal">
+  <div class="modal-content">
+
+    <!-- Close button -->
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+
+    <!-- 3D viewer -->
+    <model-viewer
+      src="https://raw.githubusercontent.com/AnatolyBerezkin/3dmodels/main/BRTIRUS Model_V3Glb.glb"
       camera-controls
       auto-rotate
       shadow-intensity="1"
-      exposure="0.4"
+      exposure="0.5"
       alt="3D model">
-  </model-viewer>
+    </model-viewer>
+
+  </div>
+</div>
+
+<script>
+  // Open modal
+  function openModal() {
+    document.getElementById("viewerModal").style.display = "block";
+  }
+
+  // Close modal
+  function closeModal() {
+    document.getElementById("viewerModal").style.display = "none";
+  }
+</script>
+
 </body>
 </html>
